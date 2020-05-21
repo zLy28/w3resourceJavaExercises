@@ -134,5 +134,117 @@ public class SolutionToBasicPart1 {
         System.out.println("After swapping, the first number is " + a + " and the second number is " + b);
     }
 
+    //    Q31:Write a Java program to check whether Java is installed on your computer.
+    public static void question31() {
+        System.out.println("Java Version:" + System.getProperty("java.version"));
+        System.out.println("Java Runtime Version: " + System.getProperty("java.runtime.version"));
+        System.out.println("Java Home: " + System.getProperty("java.home"));
+        System.out.println("Java Vendor: " + System.getProperty("java.vendor"));
+        System.out.println("Java Vendor URL: " + System.getProperty("java.vendor.url"));
+        System.out.println("Java Class Path: " + System.getProperty("java.class.path"));
 
+    }
+
+    //    Q32:Write a Java program to compare two numbers
+    public static void question32(int a, int b) {
+        if (a == b) {
+            System.out.println("a = b");
+        }
+        if (a > b) {
+            System.out.println("a > b");
+        }
+        if (a >= b) {
+            System.out.println("a >= b");
+        }
+        if (a < b) {
+            System.out.println("a < b");
+        }
+        if (a <= b) {
+            System.out.println("a <= b");
+        }
+        if (a != b) {
+            System.out.println("a != b");
+        }
+    }
+
+    //    Q33:Write a Java program and compute the sum of the digits of an integer.
+    public static void question33_1(int a) {
+        int sum = 0;
+        String str = String.valueOf(a);
+        String[] strs = str.split("");
+        for (String number : strs) {
+            int i = Integer.parseInt(number);
+            sum += i;
+        }
+        System.out.println("The sum of the digits is: " + sum);
+    }
+
+    public static void question33_2(int a) {
+        int sum = 0;
+        while (a != 0) {
+            int i = a % 10;
+            sum += i;
+            a = a / 10;
+        }
+        System.out.println("The sum of the digits is: " + sum);
+    }
+
+    //    Q34: Write a Java program to compute the area of a hexagon.
+    public static void question34(double side) {
+        double area_of_hexagon = (6 * side * side) / (4 * Math.tan(Math.PI / 6));
+        System.out.println("The area of the hexagon is: " + area_of_hexagon);
+    }
+
+    //    Q35:Write a Java program to compute the area of a polygon.
+    public static void question35(double n, double side) {
+        double area_of_polygon = (n * side * side) / (4 * Math.tan(Math.PI / n));
+        System.out.println("The area is: " + area_of_polygon);
+    }
+
+    //    Q36:Write a Java program to compute the distance between two points on the surface of earth.
+//    Radius of the earth r = 6371.01 Kilometers
+    public static void question36(double lat1, double lon1, double lat2, double lon2) {
+        double radius_of_earth = 6371.01;
+        double x1 = Math.toRadians(lat1);
+        double y1 = Math.toRadians(lon1);
+        double x2 = Math.toRadians(lat2);
+        double y2 = Math.toRadians(lon2);
+        double distance = radius_of_earth * Math.acos(Math.sin(x1) * Math.sin(x2) + Math.cos(x1) * Math.cos(x2) *
+                Math.cos(y1 - y2));
+        System.out.println("The distance between those points is: " + distance + " km.");
+    }
+
+    //    Q37:Write a Java program to reverse a string.
+    public static void question37(String string) {
+        String[] strs = string.split("");
+        String reversed = "";
+        for (int i = strs.length - 1; i >= 0; i--) {
+            reversed = reversed + strs[i];
+        }
+        System.out.println("Reverse string: "+reversed);
+    }
+
+    //    Q38: Write a Java program to count the letters, spaces, numbers and other characters of an input string.
+    public static void question38(String s) {
+        int letters = 0;
+        int spaces = 0;
+        int numbers = 0;
+        int others = 0;
+        char[] chars = s.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            if (Character.isLetter(chars[i])) {
+                letters += 1;
+            }else  if (Character.isSpaceChar(chars[i])) {
+                spaces += 1;
+            }else  if (Character.isDigit(chars[i])) {
+                numbers += 1;
+            }else {
+                others += 1;
+            }
+        }
+        System.out.println("Letters: "+ letters);
+        System.out.println("Spaces: "+spaces);
+        System.out.println("Numbers: " +numbers);
+        System.out.println("Others: "+ others);
+    }
 }
