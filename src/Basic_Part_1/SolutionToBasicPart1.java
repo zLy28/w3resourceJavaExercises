@@ -1,5 +1,9 @@
 package Basic_Part_1;
 
+import java.io.Console;
+import java.nio.charset.Charset;
+import java.util.Map;
+
 public class SolutionToBasicPart1 {
 
     //  Q1:Write a Java program to print 'Hello' on screen and then print your name on a separate line
@@ -221,7 +225,7 @@ public class SolutionToBasicPart1 {
         for (int i = strs.length - 1; i >= 0; i--) {
             reversed = reversed + strs[i];
         }
-        System.out.println("Reverse string: "+reversed);
+        System.out.println("Reverse string: " + reversed);
     }
 
     //    Q38: Write a Java program to count the letters, spaces, numbers and other characters of an input string.
@@ -234,17 +238,94 @@ public class SolutionToBasicPart1 {
         for (int i = 0; i < chars.length; i++) {
             if (Character.isLetter(chars[i])) {
                 letters += 1;
-            }else  if (Character.isSpaceChar(chars[i])) {
+            } else if (Character.isSpaceChar(chars[i])) {
                 spaces += 1;
-            }else  if (Character.isDigit(chars[i])) {
+            } else if (Character.isDigit(chars[i])) {
                 numbers += 1;
-            }else {
+            } else {
                 others += 1;
             }
         }
-        System.out.println("Letters: "+ letters);
-        System.out.println("Spaces: "+spaces);
-        System.out.println("Numbers: " +numbers);
-        System.out.println("Others: "+ others);
+        System.out.println("Letters: " + letters);
+        System.out.println("Spaces: " + spaces);
+        System.out.println("Numbers: " + numbers);
+        System.out.println("Others: " + others);
+    }
+
+    //    Q39:Write a Java program to create and display unique three-digit number using 1, 2, 3, 4.
+//        Also count how many three-digit numbers are there.
+    public static void question39() {
+        int sum = 0;
+        for (int i = 1; i <= 4; i++) {
+            for (int j = 1; j <= 4; j++) {
+                for (int k = 1; k <= 4; k++) {
+                    if (i != j && j != k && i != k) {
+                        sum++;
+                        System.out.println(i + "" + j + "" + k);
+                    }
+                }
+            }
+        }
+        System.out.println("The total number of unique digits is: " + sum);
+    }
+
+    //    Q40:Write a Java program to list the available character sets in charset objects.
+    public static void question40() {
+        Map<String, Charset> charset = Charset.availableCharsets();
+        for (String str : charset.keySet()) {
+            System.out.println(str);
+        }
+    }
+
+    //    Q41:Write a Java program to print the ascii value of a given character.
+    public static void question41(char c) {
+        int ascii = c;
+        System.out.println("The ascii value of " + c + " is " + ascii);
+    }
+
+    //    Q42:Write a Java program to input and display your password.
+    public static void question42() {
+        Console cons;
+        if ((cons = System.console()) != null) {
+            char[] password = null;
+            try {
+                password = cons.readPassword("Enter your password: ");
+                System.out.println("Your password is: " + new String(password));
+            } finally {
+                if (password != null) {
+                    java.util.Arrays.fill(password, ' ');
+                }
+            }
+        } else {
+            throw new RuntimeException("No console here. Can't get the password.");
+        }
+    }
+
+    //    Q43:Write a Java program to print the following string in a specific format (see the output).
+//    Sample Output
+//
+//    Twinkle, twinkle, little star,
+//              How I wonder what you are!
+//                  Up above the world so high,
+//                  Like a diamond in the sky.
+//    Twinkle, twinkle, little star,
+//          How I wonder what you are
+    public static void question43() {
+        System.out.println("\nTwinkle, twinkle, little star, " +
+                "\n\tHow I wonder what you are! \n\t\tUp above the world so high, " +
+                "\n\t\tLike a diamond in the sky. \nTwinkle, twinkle, little star, " +
+                "\n\tHow I wonder what you are!\n\n");
+    }
+
+    //    Q44:Write a Java program that accepts an integer (n) and computes the value of n+nn+nnn
+    public static void question44(int i) {
+        int sum =0;
+        String str1 = String.valueOf(i);
+        String str2 = str1+str1;
+        String str3 = str1+str1+str1;
+        int int2 = Integer.parseInt(str2);
+        int int3 = Integer.parseInt(str3);
+        sum =i+int2+int3;
+        System.out.println("The sum of "+str1+" "+str2+" "+str3+" is: "+ sum);
     }
 }
