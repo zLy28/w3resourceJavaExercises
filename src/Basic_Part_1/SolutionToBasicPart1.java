@@ -1,7 +1,11 @@
 package Basic_Part_1;
 
+import java.io.BufferedInputStream;
 import java.io.Console;
+import java.io.FileInputStream;
 import java.nio.charset.Charset;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 public class SolutionToBasicPart1 {
@@ -319,13 +323,128 @@ public class SolutionToBasicPart1 {
 
     //    Q44:Write a Java program that accepts an integer (n) and computes the value of n+nn+nnn
     public static void question44(int i) {
-        int sum =0;
+        int sum = 0;
         String str1 = String.valueOf(i);
-        String str2 = str1+str1;
-        String str3 = str1+str1+str1;
+        String str2 = str1 + str1;
+        String str3 = str1 + str1 + str1;
         int int2 = Integer.parseInt(str2);
         int int3 = Integer.parseInt(str3);
-        sum =i+int2+int3;
-        System.out.println("The sum of "+str1+" "+str2+" "+str3+" is: "+ sum);
+        sum = i + int2 + int3;
+        System.out.println("The sum of " + str1 + " " + str2 + " " + str3 + " is: " + sum);
+    }
+
+    //  Q45: Write a Java program to find the size of a specified file. Go to the editor
+    public static void question45(String filePath) {
+        try {
+            BufferedInputStream br = new BufferedInputStream(new FileInputStream(filePath));
+            byte[] b = new byte[1024];
+            int len = 0;
+            int sum = 0;
+            while ((len = br.read(b)) != -1) {
+                sum += len;
+            }
+            System.out.println("The total bytes of this file is: " + sum);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Q46: Write a Java program to display the system time.
+    public static void question46() {
+        SimpleDateFormat sdf = new SimpleDateFormat();
+        sdf.applyPattern("yyyy-MM-dd HH:mm:ss a");
+        Date date = new Date();
+        System.out.println("The current time is " + sdf.format(date));
+    }
+
+    // Q47:Write a Java program to display the current date time in specific format
+    // It's similar to q46.
+
+    //Q48:Write a Java program to print the odd numbers from 1 to 99. Prints one number per line.
+    public static void question48() {
+        for (int i = 1; i < 100; i++) {
+            if (i % 2 != 0) {
+                System.out.println(i);
+            }
+        }
+    }
+
+    // Q49: Write a Java program to accept a number and check the number is even or not.
+    //      Prints 1 if the number is even or 0 if the number is odd.
+    public static void question49(int number) {
+        if (number % 2 == 0) {
+            System.out.println("1");
+        } else {
+            System.out.println("0");
+        }
+    }
+
+    // Q50: Write a Java program to print numbers between 1 to 100 which are divisible by 3, 5 and by both.
+    public static void question50() {
+        System.out.println("The numbers which are divisible by 3: ");
+        for (int i = 1; i <= 100; i++) {
+            if (i % 3 == 0) {
+                System.out.println(i);
+            }
+        }
+
+        System.out.println("The numers which are divisible by 5: ");
+        for (int i = 0; i <= 100; i++) {
+            if (i % 5 == 0) {
+                System.out.println(i);
+            }
+        }
+
+        System.out.println("The numbers which are divisible by 3 and 5");
+        for (int i = 0; i <= 100; i++) {
+            if (i % 5 == 0 && i % 3 == 0) {
+                System.out.println(i);
+            }
+        }
+    }
+
+    //Q51:Write a Java program to convert a string to an integer in Java
+    public static void question51(String s) {
+        int i = Integer.parseInt(s);
+        System.out.println("The number is: " + i);
+    }
+
+    //Q52:Write a Java program to calculate the sum of two integers
+    // and return true if the sum is equal to a third integer.
+    public static void question52(int first, int second, int third) {
+        int sum = first + second;
+        boolean result = false;
+        if (sum == third) {
+            result = true;
+        }
+        System.out.println("The first integer: " + first);
+        System.out.println("The second integer: " + second);
+        System.out.println("The third integer: " + third);
+        System.out.println("The result is: " + result);
+    }
+
+    //Q53:Write a Java program that accepts three integers from the user and
+    // return true if the second number is greater than first number and third number is greater than second number.
+    // If "abc" is true second number does not need to be greater than first number.
+
+    //Q54:Write a Java program that accepts three integers from the user and return true if two or more of them
+    // (integers ) have the same rightmost digit. The integers are non-negative.
+    public static void question54(int first, int second, int third) {
+        boolean result = false;
+        if (first % 10 == second % 10 || second % 10 == third % 10 || first % 10 == third % 10) {
+            result = true;
+        }
+        System.out.println("The first integer: " + first);
+        System.out.println("The second integer: " + second);
+        System.out.println("The third integer: " + third);
+        System.out.println("The result is: " + result);
+    }
+
+    //Q55:  Write a Java program to convert seconds to hour, minute and seconds.
+    public static void question55(int seconds) {
+        int second = seconds % 60;
+        int min = (seconds / 60) % 60;
+        int hour = seconds / 3600;
+        System.out.println(hour + ":" + min + ":" + second);
     }
 }
