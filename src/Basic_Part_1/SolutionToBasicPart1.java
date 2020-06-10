@@ -447,4 +447,57 @@ public class SolutionToBasicPart1 {
         int hour = seconds / 3600;
         System.out.println(hour + ":" + min + ":" + second);
     }
+
+    //Q56: Write a Java program to find the number of integers within
+    // the range of two specified numbers and that are divisible by another number.
+    public static void question56(int x, int y, int p) {
+        int sum=0;
+        for (int i = x; i <= y; i++) {
+            if (i % p == 0) {
+                sum+=1;
+            }
+        }
+        System.out.println(sum);
+    }
+
+    //Q57: Write a Java program to accepts an integer and count the factors of the number.
+    public static void question57(int x) {
+        int sum =0;
+        for (int i = 1; i <= x; i++) {
+            if (x % i == 0) {
+                sum += 1;
+            }
+        }
+        System.out.println(sum);
+    }
+
+    //Q58:  Write a Java program to capitalize the first letter of each word in a sentence.
+    public static void question58(String sentence) {
+        String[] strs = sentence.split(" ");
+        for (String s:strs
+             ) {
+            String uppper = Character.toUpperCase(s.charAt(0)) + s.substring(1);
+            System.out.print(uppper+ " ");
+        }
+    }
+
+    //Q59: Write a Java program to convert a given string into lowercase.
+    // use toLowerCase().
+
+    //Q60: Write a Java program to find the penultimate (next to last) word of a sentence.
+    public static void question60(String sentence) {
+        String[] strs = sentence.split(" ");
+        String word = strs[strs.length - 2];
+        System.out.println(word);
+    }
+
+    //Q61:Write a Java program to reverse a word.
+    public static void question61(String word) {
+        String[] strs = word.split("");
+        String new_word = "";
+        for (int i = strs.length-1; i >= 0; i--) {
+            new_word += strs[i];
+        }
+        System.out.println(new_word);
+    }
 }
